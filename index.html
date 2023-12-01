@@ -29,6 +29,34 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+  <script>
+    const light = document.getElementById('light');
+    const roomPosition = { 
+      'top': document.getElementById('darkness').offsetTop,
+      'left': document.getElementById('darkness').offsetLeft
+    };
+
+    const topMargin = roomPosition.top + (window.innerHeight * Math.random());
+    const position = {
+      left:  Math.random() * roomPosition.left,
+      top: topMargin + 150 < window.innerHeight ? topMargin : topMargin - 350
+    };
+
+    function update(e) {
+
+      var x = ( e.clientX - 150) || (e.touches[0].clientX - 150);
+      var y = (e.clientY - 150) || (e.touches[0].clientY - 150);
+
+      light.style.left = x + "px";
+      light.style.top = y + "px";
+
+    }
+
+    document.addEventListener('mousemove', update);
+    document.addEventListener('touchmove', update);
+  </script>
+
 </head>
 
 <body>
@@ -54,9 +82,9 @@
   </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <div id="hero" class="hero route bg-image" style="background-image: url(assets/img/hero-bg.jpeg)">
-    <div class="overlay-itro"></div>
-    <div class="hero-content display-table">
+  <div id="hero darkness" class="hero route bg-image darkness" style="background-image: url(assets/img/hero-bg.jpeg)">
+    <div id="light" class="overlay-itro light"></div>
+    <div class="hero-content display-table shadow">
       <div class="table-cell">
         <div class="container">
           <!--<p class="display-6 color-d">Hello, world!</p>-->
